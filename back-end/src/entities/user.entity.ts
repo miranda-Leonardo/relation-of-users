@@ -4,9 +4,11 @@ import {
     Column,
     CreateDateColumn,
     OneToOne,
-    JoinColumn
+    JoinColumn,
+    OneToMany
 } from 'typeorm'
 import { AdditionalData } from './additional-data.entity'
+import { Contact } from './contact.entity'
 
 @Entity('users')
 class User {
@@ -16,7 +18,7 @@ class User {
     @Column({ length: 250 })
     full_name: string
 
-    @Column()
+    @Column({ unique: true })
     email: string
 
     @Column({ length: 11 })
@@ -28,6 +30,9 @@ class User {
     @OneToOne( () => AdditionalData )
     @JoinColumn()
     additional_data: AdditionalData
+
+    @OneToMany( () => Contact, (Contact) => Contact.user )
+    contacts: Contact[]
 }
 
 export { User }
