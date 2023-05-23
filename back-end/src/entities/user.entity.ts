@@ -2,8 +2,11 @@ import {
     Entity,
     PrimaryGeneratedColumn,
     Column,
-    CreateDateColumn
+    CreateDateColumn,
+    OneToOne,
+    JoinColumn
 } from 'typeorm'
+import { AdditionalData } from './additional-data.entity'
 
 @Entity('users')
 class User {
@@ -21,6 +24,10 @@ class User {
 
     @CreateDateColumn()
     registerAt: Date
+
+    @OneToOne( () => AdditionalData )
+    @JoinColumn()
+    additional_data: AdditionalData
 }
 
 export { User }
