@@ -37,6 +37,10 @@ class userModel {
             return null
         })
     }
+
+    async delet( id: string ): Promise<{}> {
+        return await this.userRepository.delete({ id: id }).then( (user) => { return {} } )
+    }
 }
 
 export { userModel }

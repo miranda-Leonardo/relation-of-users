@@ -1,7 +1,7 @@
 import { Request, Response, response } from "express";
 import { userService } from "../services/user.service";
 
-const { create, getById, update } = userService
+const { create, getById, update, delet } = userService
 
 const userController = {
     store: async ( { body }: Request, res: Response ) => {
@@ -20,6 +20,12 @@ const userController = {
         const user = await update( id, body )
         
         return res.json( user )
+    },
+
+    delet: async ( { params:{ id }}: Request, res: Response ) => {
+        const user = await delet( id )
+
+        return res.status( 204 ).json( user )
     },
 }
 

@@ -28,6 +28,14 @@ const userService = {
         return await update( id, data ).then( async (user): Promise<iUserResponse> => {
             return await responseUserSerializer.validate( user, { stripUnknown: true })
         }).catch( err => { throw new AppError( err ) })
+    },
+
+    async delet( id: string ): Promise<{}> {
+        const { delet } = new userModel
+
+        return await delet( id ).catch( err => { 
+            throw new AppError( 'User not exists!', 404 ) 
+        })
     }
 }
 
