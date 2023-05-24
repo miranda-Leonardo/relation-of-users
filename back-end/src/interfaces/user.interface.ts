@@ -7,6 +7,10 @@ interface iUserRequest {
     telephone: number
 }
 
+interface iUserUpdate extends iUserRequest {
+    additional_data: iAdditionaDataResponse | {}
+}
+
 interface iUserResponse extends iUserRequest {
     id: string
     registerAt: Date,
@@ -16,5 +20,6 @@ interface iUserResponse extends iUserRequest {
 
 export {
     iUserRequest,
+    iUserUpdate,
     iUserResponse
 }

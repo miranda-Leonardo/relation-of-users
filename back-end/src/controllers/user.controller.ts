@@ -1,20 +1,26 @@
 import { Request, Response, response } from "express";
 import { userService } from "../services/user.service";
 
-const { create, getByEmail } = userService
+const { create, getById, update } = userService
 
 const userController = {
-    store: async ( req: Request, res: Response ) => {
-        const user = await create( req.body )
+    store: async ( { body }: Request, res: Response ) => {
+        const user = await create( body )
+
+        return res.status( 201 ).json( user )
+    },
+
+    show: async ( { params:{ id }}: Request, res: Response ) => {
+        const user = await getById( id )
 
         return res.json( user )
     },
 
-    show: async ( req: Request, res: Response ) => {
-        const user = await getByEmail( req.params.id )
-
+    update: async ( { body, params: { id } }: Request, res: Response ) => {
+        const user = await update( id, body )
+        
         return res.json( user )
-    }
+    },
 }
 
 export { userController }
