@@ -1,4 +1,3 @@
-import { EntityTarget, Repository } from "typeorm";
 import { AppDataSource } from "../data-source"
 import { User } from "../entities/user.entity"
 import { iUserRequest, iUserResponse } from "../interfaces/user.interface";
@@ -14,7 +13,13 @@ class userModel {
     }
 
     async findUserByEmail( email: string ): Promise<User | null> {
-        return this.userRepository.findOneBy({ email: email })
+        return await this.userRepository.findOne({ 
+            where: { email: email },
+            relations:{
+                additional_data: true,
+                contacts: true
+            }
+        })
     }
 }
 
