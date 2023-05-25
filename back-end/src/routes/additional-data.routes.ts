@@ -3,11 +3,12 @@ import { AdditionalDataController } from "../controllers/additional-data.control
 import { ensureDataIsValidMiddleware } from "../middlewares/ensureDataIsValid.middleware";
 import { createAdditionalDataSerialzier } from "../serializers/additional-data.serializer";
 
-const { store, show } = AdditionalDataController
+const { store, show, update } = AdditionalDataController
 
 const additionalDataRoutes = Router()
 
 additionalDataRoutes.post('/', ensureDataIsValidMiddleware( createAdditionalDataSerialzier ), store)
 additionalDataRoutes.get('/:id', show)
+additionalDataRoutes.patch('/:id', update)
 
 export { additionalDataRoutes }

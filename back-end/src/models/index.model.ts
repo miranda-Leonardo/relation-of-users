@@ -4,12 +4,12 @@ import { User } from "../entities/user.entity"
 import { iUserRequest, iUserUpdate } from "../interfaces/user.interface";
 import { Contact } from "../entities/contact.entity";
 import { AdditionalData } from "../entities/additional-data.entity";
-import { iAdditionaDataRequest } from "../interfaces/additional-data.interface";
+import { iAdditionaDataRequest, iAdditionaDataUpdate } from "../interfaces/additional-data.interface";
 
 type iRepository = User | Contact | AdditionalData
 type iEntity = EntityTarget<iRepository>
 type iDataRequest = iUserRequest | iAdditionaDataRequest
-type iDataUpdate = iUserUpdate
+type iDataUpdate = iUserUpdate | iAdditionaDataUpdate
 
 class indexModel {
     protected repository: Repository<iRepository>

@@ -18,6 +18,14 @@ const AdditionalDataService = {
             return responseAdditionalDataSerialzier.validate( res, { stripUnknown: true })
         }).catch( err => { throw new AppError( 'Data already exists!', 409 )})
     },
+
+    update: async ( id: string, data: iAdditionaDataRequest ) => {
+        return await additionalData.getById( id ).then( async ( res ) => {
+            await additionalData.update( id, data )
+
+            return responseAdditionalDataSerialzier.validate( { ...res, ...data }, { stripUnknown: true })
+        }).catch( err => { throw new AppError( 'Data already exists!', 409 )})
+    },
 }
 
 export { AdditionalDataService }
