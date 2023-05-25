@@ -1,7 +1,5 @@
 import * as yup from 'yup';
 import { Schema, AnySchema } from 'yup'
-import { responseAdditionalDataSerialzier } from './additional-data.serializer';
-import { responseContactSerializer } from './contact.serializer';
 import { iUserRequest, iUserResponse } from '../interfaces/user.interface';
 
 const createUserSerializer: Schema<iUserRequest> = yup.object().shape({

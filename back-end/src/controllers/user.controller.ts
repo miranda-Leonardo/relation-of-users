@@ -1,4 +1,4 @@
-import { Request, Response, response } from "express";
+import { Request, Response } from "express";
 import { userService } from "../services/user.service";
 
 const { create, getById, update, delet } = userService

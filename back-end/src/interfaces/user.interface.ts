@@ -1,3 +1,4 @@
+import { User } from "../entities/user.entity"
 import { iAdditionaDataResponse } from "./additional-data.interface"
 import { iContactResponse } from "./contact.interface"
 

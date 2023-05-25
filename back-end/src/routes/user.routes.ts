@@ -7,7 +7,7 @@ const { store, show, update, delet } = userController
 
 const userRoutes = Router();
 
-userRoutes.post('/', ensureDataIsValidMiddleware(createUserSerializer), store)
+userRoutes.post('/', ensureDataIsValidMiddleware( createUserSerializer ), store)
 userRoutes.get('/:id', show)
 userRoutes.patch('/:id', update)
 userRoutes.delete('/:id', delet)
