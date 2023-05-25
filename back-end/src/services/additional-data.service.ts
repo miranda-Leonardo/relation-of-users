@@ -26,6 +26,12 @@ const AdditionalDataService = {
             return responseAdditionalDataSerialzier.validate( { ...res, ...data }, { stripUnknown: true })
         }).catch( err => { throw new AppError( 'Data already exists!', 409 )})
     },
+
+    delet: async ( id: string ) => {
+        return await additionalData.delet( id ).catch( err => {
+            throw new AppError( 'Data already exists!', 409 )
+        })
+    }
 }
 
 export { AdditionalDataService }
