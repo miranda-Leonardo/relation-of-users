@@ -1,6 +1,6 @@
 import { User } from "../entities/user.entity";
 import { AppError } from "../errors/app.error";
-import { iUserRequest, iUserResponse, iUserUpdate } from "../interfaces/user.interface";
+import { iUserRequest, iUserUpdate } from "../interfaces/user.interface";
 import { userModel } from "../models/user.model";
 import { responseUserSerializer } from "../serializers/user.serializer";
 
