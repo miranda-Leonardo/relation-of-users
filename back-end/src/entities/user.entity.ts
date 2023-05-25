@@ -22,7 +22,7 @@ class User {
     email: string
 
     @Column({ length: 11 })
-    telephone: number
+    telephone: string
 
     @CreateDateColumn()
     registerAt: Date

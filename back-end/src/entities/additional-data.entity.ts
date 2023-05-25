@@ -12,8 +12,8 @@ class AdditionalData {
     @Column()
     email: string
 
-    @Column({ length: 11 })
-    telephone: number
+    @Column()
+    telephone: string
 }
 
 export { AdditionalData }

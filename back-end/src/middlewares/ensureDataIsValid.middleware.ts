@@ -8,7 +8,7 @@ const ensureDataIsValidMiddleware = ( schema: AnySchema ) => async ( req: Reques
             stripUnknown: true,
             abortEarly: false
         })
-
+        
         return next()
     } catch ( err: any ) {
         throw new AppError( err.errors )

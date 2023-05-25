@@ -1,6 +1,6 @@
 interface iAdditionaDataRequest {
     email: string
-    telephone: number
+    telephone: string
 }
 
 interface iAdditionaDataResponse extends iAdditionaDataRequest {

@@ -4,36 +4,32 @@ import { userModel } from "../models/user.model";
 import { responseUserSerializer } from "../serializers/user.serializer";
 
 const userService = {
-    async create( data: iUserRequest ): Promise<iUserResponse> {
-        const { create, findByEmail } = new userModel
-        
-        await findByEmail( data.email ).then( user => { throw new AppError( 'User already exist!', 409 ) })
-
-        return await create( data ).then( async ( user ): Promise<iUserResponse> => {
+    create: async ( data: iUserRequest ): Promise<iUserResponse | void> => {
+        return await new userModel().create( data ).then( async ( user ): Promise<iUserResponse> => {
             return await responseUserSerializer.validate( user, { stripUnknown: true })
+        }).catch( err => { 
+            throw new AppError( 'User already exist!', 409 ) 
         })
     },
 
-    async getById( id: string ): Promise<iUserResponse> {
-        const { findByEmail } = new userModel
-
-        return await findByEmail( id ).then( async ( user ): Promise<iUserResponse> => {
+    getById: async ( id: string ): Promise<iUserResponse | void> => {
+        return await new userModel().getById( id ).then( async ( user ): Promise<iUserResponse> => {
             return await responseUserSerializer.validate( user, { stripUnknown: true })
+        }).catch( err => { 
+            throw new AppError( 'User not exists!', 404 )
+        })
+    },
+
+    update: async ( id: string, data: iUserUpdate ): Promise<iUserResponse> => {
+        return await new userModel().getById( id ).then( async ( user ): Promise<iUserResponse> => {
+            await new userModel().update( id, data )
+            
+            return await responseUserSerializer.validate( { ...user, ...data }, { stripUnknown: true })
         }).catch( err => { throw new AppError( 'User not exists!', 404 ) })
     },
 
-    async update( id: string, data: iUserUpdate ): Promise<iUserResponse> {
-        const { update } = new userModel
-
-        return await update( id, data ).then( async (user): Promise<iUserResponse> => {
-            return await responseUserSerializer.validate( user, { stripUnknown: true })
-        }).catch( err => { throw new AppError( err ) })
-    },
-
-    async delet( id: string ): Promise<{}> {
-        const { delet } = new userModel
-
-        return await delet( id ).catch( err => { 
+    delet: async ( id: string ): Promise<{}> => {
+        return await new userModel().delet( id ).catch( err => { 
             throw new AppError( 'User not exists!', 404 ) 
         })
     }

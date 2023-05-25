@@ -4,16 +4,14 @@ import { iContactResponse } from "./contact.interface"
 interface iUserRequest {
     full_name: string
     email: string
-    telephone: number
+    telephone: string
 }
 
-interface iUserUpdate extends iUserRequest {
-    additional_data: iAdditionaDataResponse | {}
-}
+interface iUserUpdate extends iUserRequest {}
 
 interface iUserResponse extends iUserRequest {
     id: string
-    registerAt: Date,
+    registerAt: Date
     additional_data: iAdditionaDataResponse | {},
     contacts: iContactResponse[] | []
 }
