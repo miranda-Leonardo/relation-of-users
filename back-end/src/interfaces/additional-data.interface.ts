@@ -1,16 +1,12 @@
 interface iAdditionaDataRequest {
-    email: string
-    telephone: string
+  email: string;
+  telephone: string;
 }
 
-interface iAdditionaDataUpdate extends iAdditionaDataRequest {}
+type iAdditionaDataUpdate = iAdditionaDataRequest
 
 interface iAdditionaDataResponse extends iAdditionaDataRequest {
-    id: string
+  id: string;
 }
 
-export {
-    iAdditionaDataRequest,
-    iAdditionaDataUpdate,
-    iAdditionaDataResponse
-}
+export { iAdditionaDataRequest, iAdditionaDataUpdate, iAdditionaDataResponse };

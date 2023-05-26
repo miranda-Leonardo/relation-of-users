@@ -1,12 +1,9 @@
 interface iContactRequest {
-    contact_userId: string
+  contact_userId: string;
 }
 
 interface iContactResponse extends iContactRequest {
-    id: string
+  id: string;
 }
 
-export {
-    iContactRequest,
-    iContactResponse
-}
+export { iContactRequest, iContactResponse };

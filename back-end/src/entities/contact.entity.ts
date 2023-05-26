@@ -1,19 +1,16 @@
-import { 
-    Column,
-    Entity, ManyToOne, PrimaryGeneratedColumn 
-} from 'typeorm'
-import { User } from './user.entity'
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { User } from './user.entity';
 
-@Entity('contacts')
+@Entity( 'contacts' )
 class Contact {
-    @PrimaryGeneratedColumn('uuid')
-    id: string
+  @PrimaryGeneratedColumn( 'uuid' )
+  id: string;
 
-    @Column({ unique: true })
-    contact_userId: string
+  @Column({ unique: true })
+  contact_userId: string;
 
-    @ManyToOne( () => User, (user) => user.contacts )
-    user: User
+  @ManyToOne(() => User, ( user ) => user.contacts )
+  user: User;
 }
 
-export { Contact }
+export { Contact };

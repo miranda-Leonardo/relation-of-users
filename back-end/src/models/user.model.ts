@@ -1,19 +1,19 @@
-import { indexModel } from "./index.model"
-import { Repository } from "typeorm"
-import { iUserResponse } from "../interfaces/user.interface"
+import { indexModel } from './index.model';
+import { Repository } from 'typeorm';
+import { iUserResponse } from '../interfaces/user.interface';
 
 class userModel extends indexModel {
-    protected repository: Repository<iUserResponse>
+  protected repository: Repository<iUserResponse>;
 
-    async getById( id: string ) {
-        return await this.repository.findOneOrFail({
-            where: { id: id },
-            relations: {
-                additional_data: true,
-                contacts: true
-            }
-        })
-    }
+  async getById( id: string ) {
+    return await this.repository.findOneOrFail({
+      where: { id: id },
+      relations: {
+        additional_data: true,
+        contacts: true,
+      },
+    });
+  }
 }
 
-export { userModel }
+export { userModel };

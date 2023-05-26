@@ -1,24 +1,19 @@
-import { User } from "../entities/user.entity"
-import { iAdditionaDataResponse } from "./additional-data.interface"
-import { iContactResponse } from "./contact.interface"
+import { iAdditionaDataResponse } from './additional-data.interface';
+import { iContactResponse } from './contact.interface';
 
 interface iUserRequest {
-    full_name: string
-    email: string
-    telephone: string
+  full_name: string;
+  email: string;
+  telephone: string;
 }
 
-interface iUserUpdate extends iUserRequest {}
+type iUserUpdate = iUserRequest
 
 interface iUserResponse extends iUserRequest {
-    id: string
-    registerAt: Date
-    additional_data: iAdditionaDataResponse | {},
-    contacts: iContactResponse[] | []
+  id: string;
+  registerAt: Date;
+  additional_data: iAdditionaDataResponse;
+  contacts: iContactResponse[] | [];
 }
 
-export {
-    iUserRequest,
-    iUserUpdate,
-    iUserResponse
-}
+export { iUserRequest, iUserUpdate, iUserResponse };
