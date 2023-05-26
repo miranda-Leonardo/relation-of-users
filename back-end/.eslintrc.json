@@ -1,0 +1,39 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "node": true
+  },
+  "overrides": [],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": ["@typescript-eslint", "prettier"],
+  "extends": [
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "rules": {
+    "@typescript-eslint/no-unused-vars": "off",
+    "@typescript-eslint/no-empty-function": "off",
+    "@typescript-eslint/no-non-null-assertion": "off",
+    "no-empty-function": "off",
+    "eqeqeq": "off",
+    "curly": "error",
+    "quotes": ["warn", "single", { "avoidEscape": true }],
+    "space-in-parens": [
+      "warn",
+      "always",
+      { "exceptions": ["{}", "()", "empty"] }
+    ],
+    "brace-style": ["warn", "1tbs", { "allowSingleLine": true }],
+    "block-spacing": ["warn", "always"],
+    "array-bracket-spacing": [
+      "warn",
+      "always",
+      { "objectsInArrays": false, "arraysInArrays": false }
+    ]
+  }
+}
