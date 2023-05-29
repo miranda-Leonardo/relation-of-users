@@ -1,4 +1,4 @@
-import { iAdditionaDataResponse } from './additional-data.interface';
+import { iAdditionalDataResponse } from './additional-data.interface';
 import { iContactResponse } from './contact.interface';
 
 interface iUserRequest {
@@ -7,13 +7,16 @@ interface iUserRequest {
   telephone: string;
 }
 
-type iUserUpdate = iUserRequest
+interface iUserUpdate extends iUserRequest {
+  additional_data: iAdditionalDataResponse;
+  contactId: string;
+}
 
 interface iUserResponse extends iUserRequest {
   id: string;
   registerAt: Date;
-  additional_data: iAdditionaDataResponse;
-  contacts: iContactResponse[] | [];
+  additional_data: iAdditionalDataResponse;
+  contacts: iContactResponse[];
 }
 
 export { iUserRequest, iUserUpdate, iUserResponse };

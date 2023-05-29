@@ -1,8 +1,8 @@
-import { indexModel } from './index.model';
+import { IndexModel } from './index.model';
 import { Repository } from 'typeorm';
 import { iUserResponse } from '../interfaces/user.interface';
 
-class userModel extends indexModel {
+class UserModel extends IndexModel {
   protected repository: Repository<iUserResponse>;
 
   async getById( id: string ) {
@@ -10,10 +10,11 @@ class userModel extends indexModel {
       where: { id: id },
       relations: {
         additional_data: true,
-        contacts: true,
+        contacts: { contact: true },
       },
-    });
+
+    })
   }
 }
 
-export { userModel };
+export { UserModel };

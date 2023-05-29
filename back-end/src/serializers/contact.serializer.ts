@@ -1,10 +1,20 @@
 import * as yup from 'yup';
 import { Schema } from 'yup';
-import { iContactResponse } from '../interfaces/contact.interface';
+import { iContactRequest, iContactResponse } from '../interfaces/contact.interface';
+import { responseUserSerializer } from './user.serializer';
+import { iUserResponse } from '../interfaces/user.interface';
 
-const responseContactSerializer: Schema<iContactResponse> = yup.object().shape({
-  id: yup.string().required(),
-  contact_userId: yup.string().required(),
-});
+const createContactSerializer: Schema<iContactRequest | object> = yup.object().shape({
+  contact: yup.object<iUserResponse>( responseUserSerializer ).required({ contact: 'user is required' })
+})
 
-export { responseContactSerializer };
+const responseContactSerializer: Schema<iContactResponse | object> = createContactSerializer.concat(
+  yup.object().shape({
+    id: yup.string().required({ id: 'is required' }),
+  })
+);
+
+export {
+  createContactSerializer,
+  responseContactSerializer
+};

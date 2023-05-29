@@ -1,5 +1,8 @@
+import { iUserResponse } from "./user.interface";
+
 interface iContactRequest {
-  contact_userId: string;
+  contact: iUserResponse;
+  user: iUserResponse
 }
 
 interface iContactResponse extends iContactRequest {

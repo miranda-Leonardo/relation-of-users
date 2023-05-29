@@ -5,17 +5,17 @@ import { iUserRequest, iUserUpdate } from '../interfaces/user.interface';
 import { Contact } from '../entities/contact.entity';
 import { AdditionalData } from '../entities/additional-data.entity';
 import {
-  iAdditionaDataRequest,
-  iAdditionaDataUpdate,
+  iAdditionalDataRequest,
+  iAdditionalDataUpdate,
 } from '../interfaces/additional-data.interface';
 import { iContactRequest } from '../interfaces/contact.interface';
 
 type iRepository = User | Contact | AdditionalData;
 type iEntity = EntityTarget<iRepository>;
-type iDataRequest = iUserRequest | iAdditionaDataRequest | iContactRequest;
-type iDataUpdate = iUserUpdate | iAdditionaDataUpdate;
+type iDataRequest = iUserRequest | iAdditionalDataRequest | iContactRequest;
+type iDataUpdate = iUserUpdate | iAdditionalDataUpdate;
 
-class indexModel {
+class IndexModel {
   protected repository: Repository<iRepository>;
 
   constructor( entity: iEntity ) {
@@ -29,6 +29,10 @@ class indexModel {
     return created;
   }
 
+  async getById( id: string ) {
+    return await this.repository.findOneByOrFail({ id: id });
+  }
+
   async update( id: string, data: iDataUpdate ) {
     await this.repository.update({ id: id }, data );
   }
@@ -40,4 +44,4 @@ class indexModel {
   }
 }
 
-export { indexModel };
+export { IndexModel };

@@ -1,9 +1,9 @@
-import { indexModel } from './index.model';
+import { IndexModel } from './index.model';
 import { Repository } from 'typeorm';
 import { Contact } from '../entities/contact.entity';
 
-class contactModel extends indexModel {
+class ContactModel extends IndexModel {
   protected repository: Repository<Contact>;
 }
 
-export { contactModel };
+export { ContactModel };

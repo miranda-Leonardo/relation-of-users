@@ -1,15 +1,13 @@
 import { AdditionalData } from '../entities/additional-data.entity';
 import { AppError } from '../errors/app.error';
-import {
-  iAdditionaDataRequest,
-} from '../interfaces/additional-data.interface';
-import { additionalDataModel } from '../models/additional-data.model';
+import { iAdditionalDataRequest } from '../interfaces/additional-data.interface';
+import { AdditionalDataModel } from '../models/additional-data.model';
 import { responseAdditionalDataSerialzier } from '../serializers/additional-data.serializer';
 
-const additionalData = new additionalDataModel( AdditionalData );
+const additionalData = new AdditionalDataModel( AdditionalData );
 
 const AdditionalDataService = {
-  create: async ( data: iAdditionaDataRequest ) => {
+  create: async ( data: iAdditionalDataRequest ) => {
     return await additionalData
       .create( data )
       .then(( res ) => {
@@ -31,11 +29,11 @@ const AdditionalDataService = {
         });
       })
       .catch(( err ) => {
-        throw new AppError( 'Data already exists!', 409 );
+        throw new AppError( err.errors );
       });
   },
 
-  update: async ( id: string, data: iAdditionaDataRequest ) => {
+  update: async ( id: string, data: iAdditionalDataRequest ) => {
     return await additionalData
       .getById( id )
       .then( async ( res ) => {
@@ -47,13 +45,13 @@ const AdditionalDataService = {
         );
       })
       .catch(( err ) => {
-        throw new AppError( 'Data already exists!', 409 );
+        throw new AppError( err.errors );
       });
   },
 
   delet: async ( id: string ) => {
     return await additionalData.delet( id ).catch(( err ) => {
-      throw new AppError( 'Data already exists!', 409 );
+      throw new AppError( err.errors );
     });
   },
 };

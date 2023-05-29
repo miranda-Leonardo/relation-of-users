@@ -9,10 +9,8 @@ const ensureDataIsValidMiddleware =
         stripUnknown: true,
         abortEarly: false,
       }).then( res => next()).catch( err => {
-        throw new AppError( err.errors );
+        return new AppError( err.errors );
       })
-
-      return next();
   };
 
 export { ensureDataIsValidMiddleware };

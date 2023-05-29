@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { User } from './user.entity';
 
 @Entity( 'additional-data' )
 class AdditionalData {
@@ -10,6 +11,9 @@ class AdditionalData {
 
   @Column()
   telephone: string;
+
+  @OneToOne(() => User, { onDelete: 'CASCADE' } )
+  userId: User
 }
 
 export { AdditionalData };

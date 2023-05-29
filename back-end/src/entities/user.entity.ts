@@ -31,7 +31,7 @@ class User {
   @JoinColumn()
   additional_data: AdditionalData;
 
-  @OneToMany(() => Contact, ( Contact ) => Contact.user )
+  @OneToMany(() => Contact, ( Contact ) => Contact.user, { onDelete: 'CASCADE'})
   contacts: Contact[];
 }
 

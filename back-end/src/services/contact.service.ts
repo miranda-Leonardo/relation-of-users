@@ -1,10 +1,10 @@
 import { Contact } from '../entities/contact.entity';
 import { AppError } from '../errors/app.error';
 import { iContactRequest } from '../interfaces/contact.interface';
-import { contactModel } from '../models/contact.model';
+import { ContactModel } from '../models/contact.model';
 import { responseContactSerializer } from '../serializers/contact.serializer';
 
-const contact = new contactModel( Contact );
+const contact = new ContactModel( Contact );
 
 const contactService = {
   create: async ( data: iContactRequest ) => {

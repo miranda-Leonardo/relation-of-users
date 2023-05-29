@@ -1,4 +1,4 @@
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, JoinColumn, ManyToOne, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { User } from './user.entity';
 
 @Entity( 'contacts' )
@@ -6,10 +6,11 @@ class Contact {
   @PrimaryGeneratedColumn( 'uuid' )
   id: string;
 
-  @Column({ unique: true })
-  contact_userId: string;
+  @OneToOne(()=> User, { onDelete: 'CASCADE'})
+  @JoinColumn()
+  contact: User
 
-  @ManyToOne(() => User, ( user ) => user.contacts )
+  @ManyToOne(() => User, ( user ) => user.contacts, { onDelete: 'CASCADE' })
   user: User;
 }
 
