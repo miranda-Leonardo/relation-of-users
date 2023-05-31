@@ -29,7 +29,7 @@ const AdditionalDataService = {
         });
       })
       .catch(( err ) => {
-        throw new AppError( err.errors );
+        throw new AppError( 'Data not exist!', 404 );
       });
   },
 

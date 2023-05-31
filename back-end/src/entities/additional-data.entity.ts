@@ -11,9 +11,6 @@ class AdditionalData {
 
   @Column()
   telephone: string;
-
-  @OneToOne(() => User, { onDelete: 'CASCADE'})
-  user: User
 }
 
 export { AdditionalData };

@@ -6,9 +6,9 @@ interface iContactRequest {
 }
 
 interface iContactResponse {
-  contact?: iUserResponsePartial,
-  user?: iUserResponsePartial,
-  id?: string;
+  contact: iUserResponsePartial,
+  user: iUserResponsePartial,
+  id: string;
 }
 
 interface iContactGetByIdResponse {
