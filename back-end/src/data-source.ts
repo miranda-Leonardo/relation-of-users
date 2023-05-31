@@ -6,13 +6,13 @@ import { User } from './entities/user.entity';
 import { Contact } from './entities/contact.entity';
 import { AdditionalData } from './entities/additional-data.entity';
 import { initialMigration1685019513380 } from './migrations/1685019513380-initial-migration';
-import { generateMigrations1685392601622 } from './migrations/1685392601622-generate-migrations';
+import { generateMigration1685539162857 } from './migrations/1685539162857-generate-migration';
 
 const dataSourceConfig = (): DataSourceOptions => {
   const entities = [ User, Contact, AdditionalData ];
   const migrations = [
     initialMigration1685019513380,
-    generateMigrations1685392601622
+    generateMigration1685539162857
   ];
 
   const entitiesPath: string = path.join( __dirname, './entities/*.{js,ts}' );

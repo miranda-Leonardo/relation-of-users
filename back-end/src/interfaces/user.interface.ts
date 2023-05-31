@@ -9,7 +9,7 @@ interface iUserRequest {
 
 interface iUserUpdate extends iUserRequest {
   additional_data: iAdditionalDataResponse;
-  contactId: string;
+  contact: iContactResponse;
 }
 
 interface iUserResponse extends iUserRequest {
@@ -19,4 +19,10 @@ interface iUserResponse extends iUserRequest {
   contacts: iContactResponse[];
 }
 
-export { iUserRequest, iUserUpdate, iUserResponse };
+interface iUserResponsePartial {
+  id: string
+  full_name: string,
+  email: string
+}
+
+export { iUserRequest, iUserUpdate, iUserResponse, iUserResponsePartial };

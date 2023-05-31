@@ -1,9 +1,9 @@
 import { IndexModel } from './index.model';
 import { Repository } from 'typeorm';
-import { iAdditionalDataResponse } from '../interfaces/additional-data.interface';
+import { AdditionalData } from '../entities/additional-data.entity';
 
 class AdditionalDataModel extends IndexModel {
-  protected repository: Repository<iAdditionalDataResponse>;
+  protected repository: Repository<AdditionalData>;
 }
 
 export { AdditionalDataModel };

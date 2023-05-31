@@ -18,7 +18,9 @@ const responseUserSerializer: AnySchema<iUserResponse> =
       id: yup.string().required({ id: 'is required' }),
       registerAt: yup.date().required({ registerAt: 'is required' }),
       additional_data: yup.object<iAdditionalDataResponse>( responseAdditionalDataSerialzier ).notRequired(),
-      contacts: yup.array<iContactResponse>().of( responseContactSerializer ).notRequired()
+      contacts: yup.array<iContactResponse | object>().of( yup.object().shape({
+        id: yup.string().required()
+      })).notRequired()
     })
   );
 

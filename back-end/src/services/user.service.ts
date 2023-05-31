@@ -1,9 +1,6 @@
-import { Contact } from '../entities/contact.entity';
 import { User } from '../entities/user.entity';
 import { AppError } from '../errors/app.error';
-import { iUserRequest, iUserResponse, iUserUpdate } from '../interfaces/user.interface';
-import { iContactResponse } from '../interfaces/contact.interface';
-import { ContactModel } from '../models/contact.model';
+import { iUserRequest, iUserUpdate } from '../interfaces/user.interface';
 import { UserModel } from '../models/user.model';
 import { responseUserSerializer } from '../serializers/user.serializer';
 
@@ -34,16 +31,18 @@ const userService = {
       });
   },
 
-  update: async ( id: string, { contactId, ...data }: iUserUpdate ) => {
+  update: async ( id: string, data: iUserUpdate ) => {
     return await user
       .getById( id )
       .then( async ( res ) => {
         await user.update( id, data )
 
-        return { ...res, ...data }
+        return res
       })
       .catch(( err ) => {
-        throw new AppError( 'User not exists!', 404 );
+        console.error( err );
+
+        // throw new AppError( 'User not exists!', 404 );
       });
   },
 

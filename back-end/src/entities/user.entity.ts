@@ -4,8 +4,8 @@ import {
   Column,
   CreateDateColumn,
   OneToOne,
-  JoinColumn,
   OneToMany,
+  JoinColumn,
 } from 'typeorm';
 import { AdditionalData } from './additional-data.entity';
 import { Contact } from './contact.entity';
@@ -31,7 +31,7 @@ class User {
   @JoinColumn()
   additional_data: AdditionalData;
 
-  @OneToMany(() => Contact, ( Contact ) => Contact.user, { onDelete: 'CASCADE'})
+  @OneToMany(() => Contact, ( Contact ) => Contact.user, { onDelete: 'CASCADE' })
   contacts: Contact[];
 }
 

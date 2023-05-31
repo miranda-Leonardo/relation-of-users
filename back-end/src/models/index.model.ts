@@ -1,7 +1,5 @@
 import { EntityTarget, Repository } from 'typeorm';
 import { AppDataSource } from '../data-source';
-import { User } from '../entities/user.entity';
-import { iUserRequest, iUserUpdate } from '../interfaces/user.interface';
 import { Contact } from '../entities/contact.entity';
 import { AdditionalData } from '../entities/additional-data.entity';
 import {
@@ -9,6 +7,8 @@ import {
   iAdditionalDataUpdate,
 } from '../interfaces/additional-data.interface';
 import { iContactRequest } from '../interfaces/contact.interface';
+import { User } from '../entities/user.entity';
+import { iUserRequest, iUserUpdate } from '../interfaces/user.interface';
 
 type iRepository = User | Contact | AdditionalData;
 type iEntity = EntityTarget<iRepository>;
