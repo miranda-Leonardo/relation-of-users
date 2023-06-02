@@ -12,13 +12,13 @@ const ListContacts = () => {
   (
     <ul>
       {
-        contacts.map(({ id, full_name, email, telephone }) => {
+        contacts.map(({ id, full_name, email, telephone, additional_data }) => {
           return(
             <Item key={id}>
                 <div>
                     <p>Name: {full_name}</p>
-                    <p>Email: {email}</p>
-                    <p>Telefone: {telephone}</p>
+                    <p>{`Email: ${email} ${additional_data ? `| ${additional_data.email}` : ""}`}</p>
+                    <p>{`Telefone: ${telephone} ${additional_data ? `| ${additional_data.telephone}` : ""}`}</p>
                 </div>
                 <div>
                     <Button>

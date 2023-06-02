@@ -3,6 +3,7 @@ import { Circle, Container } from './styled'
 import { FiLogOut } from 'react-icons/fi'
 import { Button } from "../Contacts/styled"
 import { DataProvider } from "../../context"
+import RegisterUser from "../registerUser"
 
 const getInitials = (name: string): string => {
   const newName = name.split(' ')
@@ -11,20 +12,19 @@ const getInitials = (name: string): string => {
 }
 
 const DataUser = () => {
-  const { user } = useContext( DataProvider )
-  console.log(user);
+  const { user, setUser } = useContext( DataProvider )
 
   return user ? (
         <Container>
             <Circle>
-                <p>{getInitials(user!.full_name)}</p>
+                <p>{getInitials(user.full_name)}</p>
             </Circle>
             <div>
-                <p>{user!.full_name}</p>
-                <p>{user!.email}</p>
-                <p>{user!.telephone}</p>
+                <p>{user.full_name}</p>
+                <p>{`${user.email} ${user.additional_data ? `| ${user.additional_data.email}` : ""}`}</p>
+                <p>{`${user.telephone} ${user.additional_data ? `| ${user.additional_data.telephone}` : ""}`}</p>
             </div>
-            <Button>
+            <Button onClick={() => setUser(undefined)}>
                 <FiLogOut />
             </Button>
         </Container>
@@ -32,7 +32,7 @@ const DataUser = () => {
   :
     (
       <>
-        <p>Usuário não logado</p>
+        <RegisterUser />
       </>
     )
 }

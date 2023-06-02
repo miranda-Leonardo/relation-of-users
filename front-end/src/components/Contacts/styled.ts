@@ -20,25 +20,50 @@ const Container = styled.div`
 `
 
 const Button = styled.button`
-    width: 60px;
-    padding: 5px 10px;
-    border: 2px solid var(--color-black-1);
-    border-radius: 4px;
-    background-color: transparent;;
-    cursor: pointer;
+  min-width: 70px;
+  padding: 5px 10px;
+  border: 2px solid var(--color-black-1);
+  border-radius: 4px;
+  background-color: transparent;;
+  cursor: pointer;
 
-    svg {
-        font-size: 20px;
-    }
+  svg {
+      font-size: 20px;
+  }
 
-    :hover {
-        border: 2px solid transparent;
-        background-color: var(--color-black-0);
+  :hover {
+      border: 2px solid transparent;
+      background-color: var(--color-black-0);
 
-        svg {
-            color: var(--color-white-0);
-        }
-    }
+      svg {
+          color: var(--color-white-0);
+      }
+  }
 `;
 
-export { Container, Button }
+const ContainerContact = styled.div`
+  padding: 10px;
+  border-radius: 4px;
+  background-color: var(--color-white-0);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  div {
+    padding: 10px 10px 0;
+
+    form {
+      padding: 0;
+    }
+  }
+
+  button {
+    font-weight: 700;
+
+    :hover {
+      color: var(--color-white-0);
+    }
+  }
+`
+
+export { Container, Button, ContainerContact }
